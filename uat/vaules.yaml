@@ -1,0 +1,16 @@
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+      ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-dev
+      acme.cert-manager.io/http01-edit-in-place: "true"
+  hosts:
+    - host: qa-app.nargizarysbek.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+   - secretName: chart-example-tls
+     hosts:
+       - qa-app.nargizarysbek.com
